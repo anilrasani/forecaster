@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set the title of the Streamlit app
-st.title('Stock Market Prediction Input Form')
+st.title('Finlang:forecaster')
 
 # Create input fields for user data
 ticker_symbol = st.text_input('Ticker Symbol (e.g., AAPL, MSFT, NVDA)', '')

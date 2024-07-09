@@ -1,15 +1,11 @@
 ![title](figs/title.png)
 
-## What is FinGPT-Forecaster?
-- FinGPT-Forecaster takes market news and optional basic financials related to the specified company from the past few weeks as input and responds with the company's **positive developments** and **potential concerns**. Then it gives out a **prediction** of stock price movement for the coming week and its **analysis** summary.
-- FinGPT-Forecaster is finetuned on Llama-2-7b-chat-hf with LoRA on the past year's DOW30 market data. But also has shown great generalization ability on other ticker symbols.
-- FinGPT-Forecaster is an easy-to-deploy junior robo-advisor, a milestone towards our goal.
+## What is Finllm-Forecaster?
+- Finllm-Forecaster takes market news and optional basic financials related to the specified company from the past few weeks as input and responds with the company's **positive developments** and **potential concerns**. Then it gives out a **prediction** of stock price movement for the coming week and its **analysis** summary.
+- Finllm-Forecaster is finetuned on Llama-2-7b-chat-hf with LoRA on the past year's DOW30 market data. But also has shown great generalization ability on other ticker symbols.
+- Finllm-Forecaster is an easy-to-deploy junior robo-advisor, a milestone towards our goal.
 
-## Try out the demo!
-
-Try our demo at <https://huggingface.co/spaces/FinGPT/FinGPT-Forecaster>
-
-![demo_interface](figs/interface.png)
+## The demo !!!
 
 Enter the following inputs:
 
@@ -25,10 +21,9 @@ Then, click Submit！You'll get a response like this
 This is just a demo showing what this model is capable of. Results inferred from randomly chosen news can be strongly biased.
 For more detailed and customized usage, scroll down and continue your reading.
 
-## Deploy FinGPT-Forecaster
+## Deploy Finllm-Forecaster
 
-We have released our FinGPT-Forecaster trained on DOW30 market data from 2022-12-30 to 2023-9-1 on HuggingFace: [fingpt-forecaster_dow30_llama2-7b_lora](https://huggingface.co/FinGPT/fingpt-forecaster_dow30_llama2-7b_lora)
-
+We have released our Finllm-Forecaster trained on DOW30 market data from 2022-12-30 to 2024-06-10.
 We have most of the key requirements in `requirements.txt`. Before you start, do `pip install -r requirements.txt`. Then you can refer to `demo.ipynb` for our deployment and evaluation script.
 
 First let's load the model:
@@ -48,7 +43,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b-chat-hf')
 
-model = PeftModel.from_pretrained(base_model, 'FinGPT/fingpt-forecaster_dow30_llama2-7b_lora')
+model = PeftModel.from_pretrained(base_model, 'Finllm/finllm-forecaster_dow30_llama2-7b_lora')
 model = model.eval()
 ```
 
@@ -104,7 +99,7 @@ Based on all the information before {curday}, let's first analyze the positive d
 
 """
 ```
-## Train your own FinGPT-Forecaster
+## Train your own Finllm-Forecaster
 
 
 

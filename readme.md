@@ -1,6 +1,6 @@
-# FinGPT's playground
+# FinLLM's playground
 
-## Ⅰ. FinGPT Models
+## Ⅰ. FinLLMS Models
 * [FinGPT-Benchmark](https://github.com/AI4Finance-Foundation/FinGPT/tree/master/fingpt/FinGPT_Benchmark): FinGPT Instruction Tuning paradigm for task-specific, multi-task, and zero-shot instruction tuning tasks
 * [FinGPT-Forecaster](https://github.com/AI4Finance-Foundation/FinGPT/tree/master/fingpt/FinGPT_Forecaster): FinGPT for Company News Analysis and Stock Price Prediction
 * [FinGPT-Low-Code-Development](https://github.com/AI4Finance-Foundation/FinGPT/tree/master/fingpt/FinGPT_Low_Code_Development): FinGPT for low-code development in Financial Field

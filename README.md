@@ -17,7 +17,7 @@ Enter the following inputs:
 
 Then, click Submit！You'll get a response like this
 
-![demo_response](figs/response.png)
+![demo_response](figs/demo.ipynb)
 
 This is just a demo showing what this model is capable of. Results inferred from randomly chosen news can be strongly biased.
 For more detailed and customized usage, scroll down and continue your reading.

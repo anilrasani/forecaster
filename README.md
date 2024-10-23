@@ -102,6 +102,60 @@ Based on all the information before {curday}, let's first analyze the positive d
 ```
 ## Train your own Finllm-Forecaster
 
+The provided code appears to implement a training pipeline for fine-tuning a large language model (LLM) using LoRA (Low-Rank Adaptation) on financial forecasting tasks, with evaluation, logging, and model checkpointing. Below is a breakdown of the key elements in this script:
+
+### Key Components:
+
+1. Model Loading (from Hugging Face's Transformers library):
+   - The script loads an LLM (`AutoModelForCausalLM`) from a base model (e.g., `chatglm2` or `llama2`).
+   - Tokenizer setup and dataset preparation are based on `datasets` from Hugging Face, including shuffling, tokenizing, and filtering for sequence length.
+
+2. LoRA Integration:
+   - LoRA is used to adapt the model efficiently with fewer parameters. This is done through the `peft` library, which introduces LoRA-specific configurations (`LoraConfig`).
+   - Model is made compatible with LoRA using `get_peft_model`.
+
+3. WandB Logging:
+   - Weights & Biases (WandB) is used for experiment tracking, with environment variables and automatic logging of evaluation metrics during training.
+
+4. Callback for Evaluation:
+   - The `GenerationEvalCallback` is a custom callback that generates predictions using the model during evaluation and logs the results (generated vs. ground truth) along with metrics such as accuracy and other financial forecasting metrics (not specified but calculated using `calc_metrics`).
+
+5. Training Setup:
+   - The training is managed by Hugging Face’s `Trainer`, which handles the training loop, gradient accumulation, and evaluation steps.
+   - Training hyperparameters are configurable through the command-line interface (CLI) using `argparse`.
+
+### Points to Customize for a Financial Forecaster:
+
+Model Selection: The current choices are `chatglm2` or `llama2`. If you'd like to fine-tune a different model, update the `base_model` argument and adjust the target modules in the LoRA config accordingly.
+  
+Dataset: The dataset argument (`--dataset`) needs to be supplied with financial data. The current setup assumes you're working with structured datasets for sequence generation (prompts and answers). Ensure your dataset aligns with these assumptions.
+  
+LoRA Parameters: LoRA parameters like `r=8`, `lora_alpha=16`, and `lora_dropout=0.1` can be adjusted for your specific task if needed. These values control the dimensionality of the low-rank matrices, the scaling factor, and the dropout rate during training.
+
+Evaluation: The `calc_metrics` function is a placeholder and should be defined according to the metrics most relevant to your financial forecasting task (e.g., mean absolute error, accuracy, or any custom financial metric).
+
+WandB Integration: Make sure you replace the `WANDB_API_KEY` with your actual API key and configure the project name accordingly.
+
+### Steps to Use the Script:
+
+1. Set Up Environment:
+   - Install necessary libraries: `transformers`, `datasets`, `torch`, `peft`, `wandb`.
+   - Create an environment or Docker setup with GPU support, as this script utilizes CUDA for training.
+
+2. Prepare Data:
+   - Structure your financial dataset with `prompt` and `answer` fields. Modify `load_dataset` and `tokenize` as per your dataset structure.
+
+3. Modify for Custom Requirements:
+   - If your forecasting task needs specific evaluation metrics, modify the `calc_metrics` function.
+   - Adjust batch size, learning rate, and other training parameters via CLI arguments.
+
+4. Run Training:
+   - Run the script from the terminal, providing the necessary arguments such as the base model, dataset path, and other hyperparameters.
+
+   Example:
+   ```bash
+   python finllm_forecaster.py --dataset "financial_data.csv" --base_model "llama2" --run_name "finllm_experiment"
+   ```
 
 
 **Disclaimer: Nothing herein is financial advice, and NOT a recommendation to trade real money. Please use common sense and always first consult a professional before trading or investing.**

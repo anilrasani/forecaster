@@ -15,5 +15,4 @@ st.write(f'Prediction Start Date: {start_date}')
 st.write(f'Number of Past Weeks: {past_weeks}')
 st.write(f'Add Latest Basic Financials: {add_financials}')
 
-# Further processing or predictions can be added below
 
